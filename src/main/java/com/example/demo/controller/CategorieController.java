@@ -19,7 +19,7 @@ public class CategorieController {
 
     @CrossOrigin(origins = "http://localhost:9090")
 
-    @PostMapping("/create")
+    @PostMapping("/")
     public ResponseEntity<Categorie> createcategorie(@RequestBody  Categorie categorie ){
         System.out.println(categorie);
         categorie =categorieService.createCategorie(categorie);
@@ -27,23 +27,23 @@ public class CategorieController {
 
     }
     // GET all categories
-    @GetMapping("/list")
+    @GetMapping("/")
     public List<Categorie> getAllCategories() {
         return categorieService.findAllCategories();
     }
 
-    @GetMapping("/getbyid/{id}")
+    @GetMapping("/{id}")
     public Categorie getCategorieById(@PathVariable Long id) {
         return categorieService.findCategorieById(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCategorieById(@PathVariable Long id) {
         categorieService.deleteCategorieById(id);
         return ResponseEntity.ok("Categorie deleted successfully");
     }
     
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Categorie> updateCategorie(@PathVariable Long id, @RequestBody Categorie categorie) {
         Categorie updatedCategorie = categorieService.updateCategorieById(id, categorie);
         return ResponseEntity.ok(updatedCategorie);
