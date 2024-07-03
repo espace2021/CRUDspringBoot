@@ -56,4 +56,15 @@ public class ArticleImplemServ implements ArticleService {
             throw new RuntimeException("Article not found");
         }
 }
+
+@Override
+public List<Article> getByDesignation(String designation) {
+    return articleRepository.findByDesignation(designation);
+}
+
+@Override
+public List<Article> findArticlesByCategorieId(Long categorieId) {
+    return articleRepository.findArticlesByCategorieId(categorieId);
+}
+
 }

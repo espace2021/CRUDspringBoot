@@ -73,4 +73,16 @@ public class ArticleController {
         Article updatedArticle = articleService.updateArticleById( id, article);
         return ResponseEntity.ok(updatedArticle);
     }
+
+    @GetMapping("/byDesignation/{designation}")
+    public List<Article> getArticlesByDesignation(@PathVariable String designation) {
+        return articleService.getByDesignation(designation);
+    }
+
+    @GetMapping("/byCategorie/{categorieId}")
+    public List<Article> getArticlesByCategorieId(@PathVariable Long categorieId) {
+        return articleService.findArticlesByCategorieId(categorieId);
+    }
+
+
 }

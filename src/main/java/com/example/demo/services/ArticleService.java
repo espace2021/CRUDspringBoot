@@ -10,4 +10,6 @@ public interface ArticleService {
     Article findArticleById(Long id);
     void deleteArticleById(Long id);
     Article updateArticleById(Long id, Article updatedArticle); 
+    List<Article> getByDesignation(String designation);
+    List<Article> findArticlesByCategorieId(Long categorieId);
 }
