@@ -30,7 +30,11 @@ public class ArticleController {
         
         Article article = new Article();
         article.setDesignation(articleDTO.getDesignation());
-       // TODO: le reste à compléter
+        article.setMarque(articleDTO.getMarque());
+        article.setReference(articleDTO.getReference());
+        article.setQtestock(articleDTO.getQtestock());
+        article.setPrix(articleDTO.getPrix());
+        article.setImageart(articleDTO.getImageart());
         article.setScategorie(scategorie);
 
         return articleService.createArticle(article);
@@ -59,7 +63,11 @@ public class ArticleController {
 
         Article article = new Article();
         article.setDesignation(articleDTO.getDesignation());
-        // TODO: le reste à compléter
+        article.setMarque(articleDTO.getMarque());
+        article.setReference(articleDTO.getReference());
+        article.setQtestock(articleDTO.getQtestock());
+        article.setPrix(articleDTO.getPrix());
+        article.setImageart(articleDTO.getImageart());
         article.setScategorie(scategorie);
 
         Article updatedArticle = articleService.updateArticleById( id, article);

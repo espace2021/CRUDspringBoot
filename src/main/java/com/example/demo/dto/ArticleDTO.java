@@ -1,5 +1,4 @@
 package com.example.demo.dto;
-
 public class ArticleDTO {
     private Long id;
     

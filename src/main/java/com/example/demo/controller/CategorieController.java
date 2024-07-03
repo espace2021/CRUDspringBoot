@@ -21,7 +21,7 @@ public class CategorieController {
 
     @PostMapping("/")
     public ResponseEntity<Categorie> createcategorie(@RequestBody  Categorie categorie ){
-        System.out.println(categorie);
+        
         categorie =categorieService.createCategorie(categorie);
         return new ResponseEntity<>(categorie, HttpStatus.CREATED) ;
 
