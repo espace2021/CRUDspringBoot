@@ -63,8 +63,13 @@ public List<Article> getByDesignation(String designation) {
 }
 
 @Override
-public List<Article> findArticlesByCategorieId(Long categorieId) {
-    return articleRepository.findArticlesByCategorieId(categorieId);
+public List<Article> customMethod(Long categorieId) {
+    return articleRepository.customMethod(categorieId);
+}
+
+@Override
+public List<Article> getByPrix(Long prix) {
+    return articleRepository.findByPrix(prix);
 }
 
 }

@@ -80,9 +80,13 @@ public class ArticleController {
     }
 
     @GetMapping("/byCategorie/{categorieId}")
-    public List<Article> getArticlesByCategorieId(@PathVariable Long categorieId) {
-        return articleService.findArticlesByCategorieId(categorieId);
+    public List<Article> customMethod(@PathVariable Long categorieId) {
+        return articleService.customMethod(categorieId);
     }
 
+    @GetMapping("/byPrix/{prix}")
+    public List<Article> getArticlesByPrix(@PathVariable Long prix) {
+        return articleService.getByPrix(prix);
+    }
 
 }

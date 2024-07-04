@@ -11,5 +11,6 @@ public interface ArticleService {
     void deleteArticleById(Long id);
     Article updateArticleById(Long id, Article updatedArticle); 
     List<Article> getByDesignation(String designation);
-    List<Article> findArticlesByCategorieId(Long categorieId);
+    List<Article> customMethod(Long categorieId);
+    List<Article> getByPrix(Long prix);
 }

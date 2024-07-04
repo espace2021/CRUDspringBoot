@@ -33,8 +33,7 @@ public class Article {
 
     private String imageart;
 
-    public Long categorieId;
-   
+    
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "scategorieID", nullable = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
