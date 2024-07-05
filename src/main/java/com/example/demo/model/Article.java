@@ -12,12 +12,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
-import lombok.Getter; 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter; 
 @Getter
 @Setter 
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "articles")
 public class Article {
@@ -44,78 +46,6 @@ public class Article {
   @OnDelete(action = OnDeleteAction.CASCADE)
   private Scategorie scategorie;
 
-/* 
-    // Constructors, getters, and other methods
-
-    public Article() {
-    }
-
-    // Getters and setters
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDesignation() {
-        return designation;
-    }
-
-    public void setDesignation(String designation) {
-        this.designation = designation;
-    }
-
-    public String getMarque() {
-        return marque;
-    }
-
-    public void setMarque(String marque) {
-        this.marque = marque;
-    }
-    
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
-    public Long getQtestock() {
-        return qtestock;
-    }
-
-    public void setQtestock(Long qtestock) {
-        this.qtestock = qtestock;
-    }
-
-    public Long getPrix() {
-        return prix;
-    }
-
-    public void setPrix(Long prix) {
-        this.prix = prix;
-    }
-
-    public String getImageart() {
-        return imageart;
-    }
-
-    public void setImageart(String imageart) {
-        this.imageart = imageart;
-    }
-
-    public Scategorie getScategorie() {
-        return scategorie;
-    }
-
-    public void setScategorie(Scategorie scategorie) {
-        this.scategorie = scategorie;
-    }
-*/
  
   }
 
