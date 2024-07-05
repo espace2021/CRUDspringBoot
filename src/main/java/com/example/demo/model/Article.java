@@ -13,6 +13,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+import lombok.Getter; 
+import lombok.Setter; 
+@Getter
+@Setter 
+
 @Entity
 @Table(name = "articles")
 public class Article {
@@ -39,7 +44,7 @@ public class Article {
   @OnDelete(action = OnDeleteAction.CASCADE)
   private Scategorie scategorie;
 
-
+/* 
     // Constructors, getters, and other methods
 
     public Article() {
@@ -110,7 +115,7 @@ public class Article {
     public void setScategorie(Scategorie scategorie) {
         this.scategorie = scategorie;
     }
-
+*/
  
   }
 

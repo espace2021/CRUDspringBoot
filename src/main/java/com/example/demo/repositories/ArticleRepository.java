@@ -20,5 +20,5 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     //liste ayant un prix max
     @Query("SELECT a FROM Article a WHERE a.prix <= :prix")
     List<Article> findByPrix(@Param("prix") Long prix);
-  
+ 
 }
