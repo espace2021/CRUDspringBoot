@@ -6,6 +6,7 @@ import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
+
 import com.example.demo.model.Article;
 
 
@@ -23,4 +24,6 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
  
     //liste par quantité = qtestock
     List<Article> findByQtestock(long qtestock);
+
+   
 }

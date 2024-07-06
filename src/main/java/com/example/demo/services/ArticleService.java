@@ -3,6 +3,8 @@ package com.example.demo.services;
 import com.example.demo.model.Article;
 import java.util.List;
 
+
+import org.springframework.data.domain.Page;
 public interface ArticleService {
     
     List<Article> findAllArticles();
@@ -15,4 +17,5 @@ public interface ArticleService {
     List<Article> getByPrix(Long prix);
     Long calculateTotalStock();
     List<Article> getOutOfStockProducts();
+    Page<Article> getAllProducts(int page, int size);
 }
