@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;
@@ -88,10 +89,15 @@ public List<Article> getOutOfStockProducts() {
 }
 
 @Override
- public Page<Article> getAllProducts(int page, int size) {
+/* public Page<Article> getAllProducts(int page, int size) {
     Pageable pageable = PageRequest.of(page, size);
     return articleRepository.findAll(pageable);
     }
+*/
 
+public Page<Article> getAllProducts(int page, int size, String sortBy) {
+    Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+    return articleRepository.findAll(pageable);
+}
 
 }

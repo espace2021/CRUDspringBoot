@@ -17,5 +17,6 @@ public interface ArticleService {
     List<Article> getByPrix(Long prix);
     Long calculateTotalStock();
     List<Article> getOutOfStockProducts();
-    Page<Article> getAllProducts(int page, int size);
+    //Page<Article> getAllProducts(int page, int size);
+    Page<Article> getAllProducts(int page, int size, String sortBy);
 }

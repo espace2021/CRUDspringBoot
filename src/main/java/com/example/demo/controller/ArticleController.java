@@ -7,7 +7,7 @@ import com.example.demo.services.ArticleService;
 import com.example.demo.repositories.ScategorieRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+//import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
@@ -102,12 +102,19 @@ public class ArticleController {
     }
 
     @GetMapping("/pagination")
-   public ResponseEntity<Page<Article>> getProductsPaginated(
+ /* public ResponseEntity<Page<Article>> getProductsPaginated(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
         Page<Article> articles = articleService.getAllProducts(page, size);
         return new ResponseEntity<>(articles, HttpStatus.OK);
     }
+*/
+public Page<Article> getAllArticles(
+    @RequestParam(defaultValue = "0") int page,
+    @RequestParam(defaultValue = "10") int size,
+    @RequestParam(defaultValue = "id") String sortBy) {
+      return articleService.getAllProducts(page, size, sortBy);
 
+}
   }
