@@ -13,4 +13,6 @@ public interface ArticleService {
     List<Article> getByDesignation(String designation);
     List<Article> customMethod(Long categorieId);
     List<Article> getByPrix(Long prix);
+    Long calculateTotalStock();
+    List<Article> getOutOfStockProducts();
 }

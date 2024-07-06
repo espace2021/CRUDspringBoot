@@ -46,6 +46,6 @@ public class Article {
   @OnDelete(action = OnDeleteAction.CASCADE)
   private Scategorie scategorie;
 
- 
+  
   }
 

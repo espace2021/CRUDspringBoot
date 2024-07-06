@@ -72,4 +72,15 @@ public List<Article> getByPrix(Long prix) {
     return articleRepository.findByPrix(prix);
 }
 
+@Override
+public Long calculateTotalStock() {
+    List<Article> products = articleRepository.findAll();
+    return products.stream().mapToLong(Article::getQtestock).sum();
+}
+
+@Override
+public List<Article> getOutOfStockProducts() {
+    return articleRepository.findByQtestock(0);
+}
+
 }

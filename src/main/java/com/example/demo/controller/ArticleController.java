@@ -89,4 +89,14 @@ public class ArticleController {
         return articleService.getByPrix(prix);
     }
 
-}
+    @GetMapping("/total-stock")
+    public long calculateTotalStock() {
+        return articleService.calculateTotalStock();
+    }
+
+    @GetMapping("/out-of-stock")
+    public List<Article> getOutOfStockProducts() {
+        return articleService.getOutOfStockProducts();
+    }
+
+  }
