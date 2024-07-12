@@ -13,3 +13,4 @@ Write-Host "Démarrage de la nouvelle version de l'application..."
 Start-Process -FilePath "java" -ArgumentList "-jar D:\Sandra\mon-application.jar" -NoNewWindow -RedirectStandardOutput "C:\path\to\deployment\mon-application.log" -RedirectStandardError "C:\path\to\deployment\mon-application.log"
 
 Write-Host "Déploiement terminé."
+
