@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/espace2021/CRUDspringBoot'
+                git branch: 'master', url: 'https://github.com/espace2021/CRUDspringBoot'
             }
         }
         stage('Build') {
@@ -21,9 +21,9 @@ pipeline {
                 sh './mvnw test'
             }
         }
-        stage('Deploy') {
+       stage('Deploy') {
             steps {
-                sh './deploy.sh' // Script de déploiement
+                powershell './deploy.ps1' // Script de déploiement PowerShell
             }
         }
         stage('Update Jira') {
