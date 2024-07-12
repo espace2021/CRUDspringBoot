@@ -30,8 +30,8 @@ pipeline {
             steps {
                 script {
                     def jiraIssueKey = "KAN-2"
-                    def jiraComment = "Build et déploiement réussis pour ${env.BUILD_ID}"
-                    jiraAddComment site: env.JIRA_SITE, idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-creds'
+                    def jiraComment = "Build et déploiement réussis"
+                    jiraAddComment site: "https://monsite2024.atlassian.net/jira/software/projects/KAN/boards/1", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-api-token'
                 }
             }
         }
@@ -40,8 +40,8 @@ pipeline {
         failure {
             script {
                 def jiraIssueKey = "KAN-2"
-                def jiraComment = "Build ou déploiement échoué pour ${env.BUILD_ID}"
-                jiraAddComment site: env.JIRA_SITE, idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-creds'
+                def jiraComment = "Build ou déploiement échoué"
+                jiraAddComment site: "https://monsite2024.atlassian.net/jira/software/projects/KAN/boards/1", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-api-token'
             }
         }
     }
