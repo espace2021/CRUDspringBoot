@@ -26,7 +26,7 @@ pipeline {
                 script {
                     def jiraIssueKey = "KAN-2"
                     def jiraComment = "Build et déploiement réussis"
-                    jiraAddComment site: "https://monsite2024.atlassian.net/jira/software/projects/KAN/boards/1", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-SandraHammami'
+                    jiraAddComment site: "https://monsite2024.atlassian.net/jira/software/projects/KAN/boards/1", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-api-token'
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
             script {
                 def jiraIssueKey = "KAN-2"
                 def jiraComment = "Build ou déploiement échoué"
-                jiraAddComment site: "https://monsite2024.atlassian.net/jira/software/projects/KAN/boards/1", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-SandraHammami'
+                jiraAddComment site: "https://monsite2024.atlassian.net/jira/software/projects/KAN/boards/1", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-api-token'
             }
         }
     }
