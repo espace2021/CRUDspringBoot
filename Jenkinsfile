@@ -21,11 +21,6 @@ pipeline {
                 bat 'mvnw.cmd test' // Utiliser bat pour exécuter des commandes sur Windows
             }
         }
-        stage('Deploy') {
-            steps {
-                powershell './deploy.ps1' // Script de déploiement PowerShell
-            }
-        }
         stage('Update Jira') {
             steps {
                 script {
