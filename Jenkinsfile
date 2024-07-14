@@ -1,9 +1,9 @@
 pipeline {
     agent any
     environment {
-        JIRA_SITE = 'https://monsite2024.atlassian.net'
+        JIRA_SITE = 'https://monsitejira2024.atlassian.net/'
         JIRA_USER = 'sandrahammamitlili@gmail.com'  // Votre adresse e-mail utilisée pour Jira
-        JIRA_API_TOKEN = 'ATATT3xFfGF0GuMjsWOxjTEo6ZqLYhvSp2D6UlJjiQGdTR7PERbtmWhP-ZhzH1yiBw89qlzZ7TqC7sJHokPM334v2-Or6lwozq0TFHjw8Jt5TrP2xkjIrYuYM3s-jHnqHGj6ou-v0MULxvksNhAsPRaiXygNbPQ1UEg0crnKp1LeChszO27PTOE=BC24C324'  // Votre jeton API Jira
+        JIRA_API_TOKEN = 'ATATT3xFfGF0EkNFol1FcGH-jbxCjNYojvTMmN4wgmRshxlirpAE2mvWSs6-luvoZeX8MtmhLt8Gugc_5TTUcYk2ODb9T34MBuCyYr9k935Zi3rsDw0p2O1t_FAIz4hRMGUBPAMh4rxf0nf1iAxd8rUOWZDtXwCO5jAzxooMNqhU7xzpk__qTBA=B6F3957F'  // Votre jeton API Jira
     }
     stages {
         stage('Checkout') {
@@ -24,9 +24,9 @@ pipeline {
         stage('Update Jira') {
             steps {
                 script {
-                    def jiraIssueKey = "KAN-2"
+                    def jiraIssueKey = "PROJ-2"
                     def jiraComment = "Build et déploiement réussis"
-                    jiraAddComment site: "https://monsite2024.atlassian.net/jira/software/projects/KAN/boards/1", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-api-token'
+                    jiraAddComment site: "https://monsitejira2024.atlassian.net/jira/servicedesk/projects/PROJ/queues/custom/4", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-ids'
                 }
             }
         }
@@ -34,9 +34,9 @@ pipeline {
     post {
         failure {
             script {
-                def jiraIssueKey = "KAN-2"
+                def jiraIssueKey = "PROJ-2"
                 def jiraComment = "Build ou déploiement échoué"
-                jiraAddComment site: "https://monsite2024.atlassian.net/jira/software/projects/KAN/boards/1", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-api-token'
+                jiraAddComment site: "https://monsitejira2024.atlassian.net/jira/servicedesk/projects/PROJ/queues/custom/4", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-ids'
             }
         }
     }
