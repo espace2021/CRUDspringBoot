@@ -21,7 +21,24 @@ pipeline {
                 bat 'mvnw.cmd test' // Utiliser bat pour exécuter des commandes sur Windows
             }
         }
-        stage('Update Jira') {
+         stage('Test Jira API') {
+            steps {
+                script {
+                    def jiraIssueKey = "PROJ-2"
+                    def jiraComment = "Test comment from Jenkins"
+                    def response = httpRequest acceptType: 'APPLICATION_JSON',
+                        contentType: 'APPLICATION_JSON',
+                        httpMode: 'POST',
+                        requestBody: """{
+                            "body": "test from jenkins"
+                        }""",
+                        url: "https://monsitejira2024.atlassian.net/rest/api/2/issue/PROJ-2/comment",
+                        authentication: 'jira-credentials'
+                    echo "Response: ${response}"
+                }
+            }
+        }
+         stage('Update Jira') {
             steps {
                 script {
                     def jiraIssueKey = "PROJ-2"
