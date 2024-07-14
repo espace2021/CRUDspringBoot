@@ -26,7 +26,7 @@ pipeline {
                 script {
                     def jiraIssueKey = "PROJ-2"
                     def jiraComment = "Build et déploiement réussis"
-                    jiraAddComment site: "https://monsitejira2024.atlassian.net/jira/servicedesk/projects/PROJ/queues/custom/4", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-credentials'
+                    jiraAddComment site: "https://monsitejira2024.atlassian.net", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-credentials'
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
             script {
                 def jiraIssueKey = "PROJ-2"
                 def jiraComment = "Build ou déploiement échoué"
-                jiraAddComment site: "https://monsitejira2024.atlassian.net/jira/servicedesk/projects/PROJ/queues/custom/4", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-credentials'
+                jiraAddComment site: "https://monsitejira2024.atlassian.net", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-credentials'
             }
         }
     }
