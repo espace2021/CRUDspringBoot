@@ -24,15 +24,15 @@ pipeline {
          stage('Test Jira API') {
             steps {
                 script {
-                    def jiraIssueKey = "PROJ-2"
-                    def jiraComment = "Test comment from Jenkins"
+                    def comment = "Test comment from Jenkins"
                     def response = httpRequest acceptType: 'APPLICATION_JSON',
                         contentType: 'APPLICATION_JSON',
                         httpMode: 'POST',
                         requestBody: """{
                             "body": "test from jenkins"
                         }""",
-                        url: "https://monsitejira2024.atlassian.net/rest/api/2/issue/PROJ-2/comment",
+                        url: "https://monsitejira2024.atlassian.net/rest/api/2/issue/createmeta/PROJ/issuetypes/"
+
                         authentication: 'jira-credentials'
                     echo "Response: ${response}"
                 }
