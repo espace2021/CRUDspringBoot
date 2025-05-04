@@ -1,60 +1,66 @@
 pipeline {
     agent any
+
     environment {
-        JIRA_SITE = 'https://monsitejira2024.atlassian.net/'
-        JIRA_USER = 'sandrahammamitlili@gmail.com'  // Votre adresse e-mail utilisée pour Jira
-        JIRA_API_TOKEN = 'ATATT3xFfGF0EkNFol1FcGH-jbxCjNYojvTMmN4wgmRshxlirpAE2mvWSs6-luvoZeX8MtmhLt8Gugc_5TTUcYk2ODb9T34MBuCyYr9k935Zi3rsDw0p2O1t_FAIz4hRMGUBPAMh4rxf0nf1iAxd8rUOWZDtXwCO5jAzxooMNqhU7xzpk__qTBA=B6F3957F'  // Votre jeton API Jira
+        MAVEN_HOME = tool 'Maven 3' // Déclare le nom de l'installation Maven dans Jenkins
+        JAVA_HOME = tool 'JDK 21'   // Déclare le nom de l'installation JDK dans Jenkins
+        PATH = "${MAVEN_HOME}/bin:${JAVA_HOME}/bin:${env.PATH}"
     }
+
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/espace2021/CRUDspringBoot', credentialsId: 'github-creds']]])
+                echo 'Clonage du dépôt Git...'
+                checkout scm
             }
         }
+
         stage('Build') {
             steps {
-                bat 'mvnw.cmd clean package' // Utiliser bat pour exécuter des commandes sur Windows
+                echo 'Construction du projet Maven...'
+                sh 'mvn clean install -DskipTests'
             }
         }
-        stage('Test') {
-            steps {
-                bat 'mvnw.cmd test' // Utiliser bat pour exécuter des commandes sur Windows
-            }
-        }
-         stage('Test Jira API') {
-            steps {
-                script {
-                    def comment = "Test comment from Jenkins"
-                    def response = httpRequest acceptType: 'APPLICATION_JSON',
-                        contentType: 'APPLICATION_JSON',
-                        httpMode: 'POST',
-                        requestBody: """{
-                            "body": "test from jenkins"
-                        }""",
-                        url: "https://monsitejira2024.atlassian.net/rest/api/2/issue/createmeta/PROJ/issuetypes/"
 
-                        authentication: 'jira-credentials'
-                    echo "Response: ${response}"
+        stage('Tests') {
+            steps {
+                echo 'Exécution des tests...'
+                sh 'mvn test'
+            }
+
+            post {
+                always {
+                    junit '**/target/surefire-reports/*.xml' // Rapports de tests JUnit
                 }
             }
         }
-         stage('Update Jira') {
+
+        stage('Package') {
             steps {
-                script {
-                    def jiraIssueKey = "PROJ-2"
-                    def jiraComment = "Build et déploiement réussis"
-                    jiraAddComment site: "https://monsitejira2024.atlassian.net", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-credentials'
-                }
+                echo 'Packaging de l\'application...'
+                sh 'mvn package -DskipTests'
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo 'Déploiement de l\'application...'
+                // Exemple de commande de déploiement (à adapter)
+                sh 'scp target/monapp.jar user@serveur:/chemin/deploiement/'
+                sh 'ssh user@serveur "systemctl restart monapp"'
             }
         }
     }
+
     post {
+        success {
+            echo 'Pipeline exécuté avec succès ✅'
+        }
         failure {
-            script {
-                def jiraIssueKey = "PROJ-2"
-                def jiraComment = "Build ou déploiement échoué"
-                jiraAddComment site: "https://monsitejira2024.atlassian.net", idOrKey: jiraIssueKey, comment: jiraComment, credentialsId: 'jira-credentials'
-            }
+            echo 'Échec du pipeline ❌'
         }
     }
 }
