@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        MAVEN_HOME = tool 'Maven 3' // Déclare le nom de l'installation Maven dans Jenkins
-        JAVA_HOME = tool 'JDK 21'   // Déclare le nom de l'installation JDK dans Jenkins
+        MAVEN_HOME = tool 'M2_HOME' // Déclare le nom de l'installation Maven dans Jenkins
+        JAVA_HOME = tool 'JAVA_HOME'   // Déclare le nom de l'installation JDK dans Jenkins
         PATH = "${MAVEN_HOME}/bin:${JAVA_HOME}/bin:${env.PATH}"
     }
 
